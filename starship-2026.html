@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Starship 2026 • Tests & Flights</title>
+  <title>Starship Program • Flights & Tests</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -46,12 +46,12 @@
     <div class="flex items-end justify-between mb-8">
       <div>
         <div class="text-sm text-[#f97316] font-medium tracking-[2px]">STARSHIP PROGRAM</div>
-        <h1 class="text-5xl font-semibold tracking-tighter font-display">2026 Tests & Flights</h1>
-        <p class="mt-1 text-xl text-white/70">3 key tests reaching space • YTD as of June 13, 2026</p>
+        <h1 class="text-5xl font-semibold tracking-tighter font-display">Flights & Tests (2023–2026)</h1>
+        <p class="mt-1 text-xl text-white/70">Notable tests reaching space • 3 in 2026 (YTD as of June 13, 2026)</p>
       </div>
       <div class="text-right hidden sm:block">
         <div class="text-4xl font-semibold tabular-nums text-[#f97316]">3</div>
-        <div class="text-xs text-white/50">significant space-reaching tests</div>
+        <div class="text-xs text-white/50">significant 2026 space-reaching tests</div>
       </div>
     </div>
 
@@ -63,7 +63,7 @@
                class="w-full bg-white/5 border border-white/10 pl-10 pr-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-white/30 placeholder:text-white/40">
       </div>
       <select id="month-filter" class="bg-white/5 border border-white/10 px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-white/30">
-        <option value="">All months</option>
+        <option value="">All months (2026)</option>
         <option value="01">January</option>
         <option value="02">February</option>
         <option value="03">March</option>
@@ -99,13 +99,13 @@
     </div>
 
     <div class="mt-3 text-xs text-white/50 flex items-center justify-between px-1">
-      <div>Showing <span id="visible-count"></span> of Starship 2026 activity (demo selection of tests reaching space)</div>
+      <div>Showing <span id="visible-count"></span> of Starship program flights (demo selection; 3 reached space in 2026)</div>
       <div>Full details: <a href="https://en.wikipedia.org/wiki/2026_in_spaceflight" target="_blank" class="underline hover:text-white">Wikipedia 2026 in spaceflight</a> • <a href="https://www.spacex.com/vehicles/starship" target="_blank" class="underline hover:text-white">SpaceX Starship</a></div>
     </div>
   </div>
 
   <footer class="border-t border-white/10 py-6 text-center text-xs text-white/50">
-    Demo page for <a href="https://bennettwells.net/testing" class="underline">bennettwells.net/testing</a> • Starship data is test-focused and approximate for illustration
+    Demo page for <a href="https://bennettwells.net/testing" class="underline">bennettwells.net/testing</a> • Starship data is test-focused and approximate for illustration (program spans 2023+)
   </footer>
 
   <script>
@@ -128,13 +128,20 @@
       }
     }
 
-    // Starship 2026 tests & flights (demo selection focused on those reaching space)
+    // Starship flights & tests across years (demo selection; focused on those reaching space)
     const missions = [
+      { date: "2023-04-20", flight: "Flight 1 (IFT-1)", type: "Suborbital test", outcome: "Partial success", notes: "First Starship test flight; reached space" },
+      { date: "2023-11-18", flight: "Flight 2 (IFT-2)", type: "Suborbital test", outcome: "Partial success", notes: "Reached space; booster test" },
+      { date: "2024-03-14", flight: "Flight 3 (IFT-3)", type: "Suborbital test", outcome: "Success", notes: "Reached space; improved performance" },
+      { date: "2024-06-06", flight: "Flight 4 (IFT-4)", type: "Suborbital test", outcome: "Success", notes: "Reached space; booster catch attempt" },
+      { date: "2024-10-13", flight: "Flight 5 (IFT-5)", type: "Suborbital test", outcome: "Success", notes: "First successful booster catch" },
+      { date: "2025-02-10", flight: "Flight 6", type: "Suborbital test", outcome: "Partial success", notes: "Reached space" },
+      { date: "2025-05-20", flight: "Flight 7", type: "Suborbital / Orbital attempt", outcome: "Success", notes: "Reached space; ship test" },
+      { date: "2025-09-15", flight: "Flight 8", type: "Suborbital test", outcome: "Success", notes: "Reached space; heat shield improvements" },
       { date: "2026-01-15", flight: "Flight 9", type: "Suborbital test", outcome: "Success", notes: "Reached space; booster landing test" },
       { date: "2026-02-28", flight: "Flight 10", type: "Suborbital test", outcome: "Partial success", notes: "High altitude; ship RUD after reentry" },
       { date: "2026-04-05", flight: "Flight 11", type: "Suborbital test", outcome: "Success", notes: "Reached space; improved heat shield" },
-      { date: "2026-05-22", flight: "Flight 12", type: "Suborbital test", outcome: "Partial success", notes: "Reached space; booster catch attempt" },
-      { date: "2026-06-01", flight: "Flight 13", type: "Suborbital / Orbital attempt", outcome: "Test", notes: "Upcoming - data as of mid-June" }
+      { date: "2026-05-22", flight: "Flight 12", type: "Suborbital test", outcome: "Partial success", notes: "Reached space; booster catch attempt" }
     ];
 
     function renderTable(filteredMissions) {
@@ -215,7 +222,7 @@
       document.getElementById('month-filter').addEventListener('change', filterAndRender);
       document.getElementById('outcome-filter').addEventListener('change', filterAndRender);
 
-      console.log('%c[Starship 2026] Missions page initialized. Demo data for Starship tests reaching space.', 'color:#64748b');
+      console.log('%c[Starship Program] Missions page initialized. Dates now span 2023–2026.', 'color:#64748b');
     }
 
     if (document.readyState === 'loading') {
