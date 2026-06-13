@@ -1,0 +1,36 @@
+name: Sync spacexdemo to bennettwells-website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout spacexdemo
+        uses: actions/checkout@v4
+        with:
+          path: spacexdemo
+
+      - name: Checkout bennettwells-website
+        uses: actions/checkout@v4
+        with:
+          repository: bennettwellsnet/bennettwells-website
+          token: ${{ secrets.WEBSITE_PAT }}
+          path: bennettwells-website
+
+      - name: Copy files into spacexdemo subfolder
+        run: |
+          mkdir -p bennettwells-website/spacexdemo
+          cp spacexdemo/*.html bennettwells-website/spacexdemo/
+
+      - name: Commit and push
+        run: |
+          cd bennettwells-website
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add spacexdemo/
+          git diff --staged --quiet && echo "No changes to sync." || \
+            (git commit -m "sync: update spacexdemo from source repo" && git push)
